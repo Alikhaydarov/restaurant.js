@@ -17,6 +17,10 @@
 </head>
 
 <body>
+  <!-- Loader start -->
+   <div class="loader-wrapper">
+    <span class="loader"></span>
+   </div>
   <!-- Header Start -->
   <header>
     <div id="navbar">
@@ -27,7 +31,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#menu">Menu</a></li>
           <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a data-modal href="#contact">Contact Us</a></li>
         </ul>
       </nav>
     </div>
@@ -36,7 +40,7 @@
       <p>Here you can find Most delicacies food in the world</p>
       <div class="btn__group">
         <button class="button arrow">Read more</button>
-        <button class="button phone">Contact Us</button>
+        <button data-modal class="button phone">Contact Us</button>
       </div>
     </div>
   </header>
@@ -275,7 +279,7 @@
         <div style="display: flex; justify-content: center;">
           <div class="btn__group">
             <button class="button arrow">Read more</button>
-            <button class="button phone">Contact Us</button>
+            <button data-modal class="button phone">Contact Us</button>
           </div>
         </div>
       </div>
@@ -408,13 +412,13 @@
     <div class="modal__dialog">
       <div class="modal__content">
         <form action="#">
-          <div class="modal__close">&times;</div>
-          <div class="modal__title">
+          <div data-modal-close class="modal__close">&times;</div>
+          <div data-modal class="modal__title">
             Contact Us!
           </div>
           <input required placeholder="Full Name" name="name" type="text" class="modal__input" />
           <input required placeholder="Phone Number" name="phone" type="phone" class="modal__input" />
-          <button class="btn btn-third">Contact Us</button>
+          <button data-modal class="btn btn-third">Contact Us</button>
         </form>
       </div>
     </div>
