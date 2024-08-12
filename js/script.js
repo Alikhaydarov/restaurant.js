@@ -114,7 +114,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		modal.classList.add('show')
 		modal.classList.remove('hide')
 		document.body.style.overflow = 'hidden'
-		clearInterval(modal)
+		clearInterval(modalTimerId)
 	}
 	const closeModal = () => {
 		modal.classList.add('hide')
@@ -137,4 +137,74 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	})
 	const modalTimerId = setTimeout(openModal, 6000)
+	//class
+
+	class OfferMenu {
+		constructor(src, title, alt, descr, sale, discount, elementParent) {
+			this.src = src
+			this.alt = alt
+			this.descr = descr
+			this.title = title
+			this.sale = sale
+			this.discount = discount
+			this.parent = document.querySelector(elementParent)
+			this.formatToUSD()
+		}
+		formatToUSD() {
+			this.discount = this.discount.toLocaleString('en-US', {
+				style: 'currency',
+				currency: 'USD',
+			})
+			this.sale = this.sale.toLocaleString('en-US', {
+				style: 'currency',
+				currency: 'USD',
+			})
+		}
+		render() {
+			const element = document.createElement('div')
+			element.innerHTML = `
+            <img src="${this.src}" alt="${this.alt}">
+            <div>
+              <h3>${this.title}</h3>
+              <p>${this.descr}</p>
+              <p><del>${this.discount}</del> <span class="primary-text">${this.sale}</span></p>
+            </div>
+			`
+			this.parent.append(element)
+		}
+	}
+	const offers = [
+		{
+			src: './img/offer1.png',
+			title: 'Quattro Pasta',
+			alt: 'Quattro Pasta',
+			descr:
+				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.',
+			sale: 20,
+			discount: 30,
+		},
+		{
+			src: './img/offer2.png',
+			title: 'Quattra',
+			alt: 'Quattro Pasta',
+			descr:
+				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.',
+			sale: 20,
+			discount: 30,
+		},
+		{
+			src: './img/offer3.png',
+			title: 'Quattro Pastass',
+			alt: 'Quattro Pasta',
+			descr:
+				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, quibusdam.',
+			sale: 20,
+			discount: 30,
+		},
+	]
+
+	offers.forEach(offer => {
+		const { src, title, alt, descr, sale, discount } = offer
+		new OfferMenu(src,title,alt,descr,sale,discount,'.offers-items').render()
+	})
 })
